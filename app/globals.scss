@@ -1,0 +1,33 @@
+html {
+  --c-text-primary: #a1a1a1;
+  --c-text-secondary: #fafafa;
+
+  --c-bg-primary: #1b1b1b;
+  --c-bg-secondary: #2a2a2a;
+  --c-bg-thirty: #232323;
+
+  --c-green-light: #1ee0ac;
+  --c-orange: #fd7913;
+
+  --c-border-line: #39393b;
+}
+
+body {
+  background: var(--c-bg-primary);
+  margin: 0;
+
+  color: var(--c-text-primary);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
