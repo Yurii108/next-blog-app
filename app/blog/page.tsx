@@ -11,7 +11,7 @@ async function getProducts() {
   return response.json();
 }
 
-export default async function Shop() {
+export default async function Blog() {
   const data = await getProducts();
 
   return (
@@ -23,7 +23,7 @@ export default async function Shop() {
               <h3>{iphone.title}</h3>
               <p>{iphone.body}</p>
 
-              <Link href={`/shop/${iphone.id}`}>Link - {iphone.id}</Link>
+              <Link href={`/blog/${iphone.id}`}>Link - {iphone.id}</Link>
             </li>
           );
         })}
