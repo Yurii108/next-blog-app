@@ -2,11 +2,9 @@ import Link from "next/link";
 import "./style.scss";
 
 async function getProducts() {
-  // const response = await fetch("https://paraska.free.beeceptor.com/iphones");
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
   if (!response.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 
@@ -15,8 +13,6 @@ async function getProducts() {
 
 export default async function Shop() {
   const data = await getProducts();
-
-  // console.log(data);
 
   return (
     <>

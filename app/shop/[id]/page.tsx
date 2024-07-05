@@ -6,7 +6,6 @@ async function getProducts(id: string) {
   );
 
   if (!response.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 
@@ -19,22 +18,25 @@ type Props = {
   };
 };
 
-export function generateMetadata({ params: { id } }: Props) {
+export async function generateMetadata({ params: { id } }: Props) {
+  const data = await getProducts(id);
+
   return {
-    title: id,
+    title: data.title,
   };
 }
 
 export default async function Item({ params: { id } }: Props) {
   const data = await getProducts(id);
 
-  // console.log(data);
-
   return (
     <>
       <h1>
         {data.id} {data.title}
       </h1>
+
+      {data.body}
+      <p></p>
 
       <Link href={"/shop"} style={{ color: "white", padding: "25px" }}>
         Back
