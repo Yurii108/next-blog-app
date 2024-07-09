@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 async function getProducts(id: string) {
@@ -18,7 +19,9 @@ type Props = {
   };
 };
 
-export async function generateMetadata({ params: { id } }: Props) {
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
   const data = await getProducts(id);
 
   return {
