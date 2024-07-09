@@ -1,15 +1,19 @@
-import Link from "next/link";
 import React from "react";
 
 import "./style.scss";
+import Navigation from "../Navigation";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
+];
 
 export const Header: React.FC = () => {
   return (
     <header className="header">
       <div>
-        <Link href={"/"}>Home</Link>
-        <Link href={"/blog"}>Blog</Link>
-        <Link href={"/about"}>About</Link>
+        <Navigation navLinks={navItems} />
       </div>
     </header>
   );
