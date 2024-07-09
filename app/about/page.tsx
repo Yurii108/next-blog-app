@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  return <h3>Select subitem</h3>;
+  return <h1>Select subitem</h1>;
 }

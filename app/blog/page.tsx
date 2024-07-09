@@ -8,7 +8,11 @@ export const metadata: Metadata = {
 };
 
 async function getPosts() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    next: {
+      revalidate: 60,
+    },
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
@@ -23,13 +27,10 @@ export default async function Blog() {
   return (
     <>
       <ul className="list">
-        {data.map((iphone: any) => {
+        {data.map((posts: any) => {
           return (
-            <li key={iphone.id}>
-              <h3>{iphone.title}</h3>
-              <p>{iphone.body}</p>
-
-              <Link href={`/blog/${iphone.id}`}>Link - {iphone.id}</Link>
+            <li key={posts.id}>
+              <Link href={`/blog/${posts.id}`}>{posts.title}</Link>
             </li>
           );
         })}

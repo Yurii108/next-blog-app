@@ -38,12 +38,9 @@ export default async function Item({ params: { id } }: Props) {
         {data.id} {data.title}
       </h1>
 
-      {data.body}
-      <p></p>
+      <p>{data.body}</p>
 
-      <Link href={"/shop"} style={{ color: "white", padding: "25px" }}>
-        Back
-      </Link>
+      <Link href={"/blog"}>Back</Link>
     </>
   );
 }

@@ -2,5 +2,16 @@
   width: 100%;
 
   li {
+    text-align: left;
+    list-style: disc;
+  }
+
+  a {
+    color: var(--c-text-primary);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }
