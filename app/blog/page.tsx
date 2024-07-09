@@ -1,7 +1,13 @@
 import Link from "next/link";
 import "./style.scss";
 
-async function getProducts() {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | Next App",
+};
+
+async function getPosts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
   if (!response.ok) {
@@ -12,7 +18,7 @@ async function getProducts() {
 }
 
 export default async function Blog() {
-  const data = await getProducts();
+  const data = await getPosts();
 
   return (
     <>
