@@ -1,3 +1,4 @@
+import { getAllPosts } from "@/services/getPosts";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -18,6 +19,12 @@ type Props = {
     id: string;
   };
 };
+
+export async function generateStaticParams() {
+  const posts: any[] = await getAllPosts();
+
+  return posts.map((post) => ({ slug: post.id.toString() }));
+}
 
 export async function generateMetadata({
   params: { id },
