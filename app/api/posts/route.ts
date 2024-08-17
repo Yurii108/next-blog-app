@@ -20,7 +20,13 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   const body = await req.json();
 
-  console.log(body);
+  const newId = posts.length + 1;
 
-  return NextResponse.json({ body });
+  const newPost = { ...body, id: newId };
+
+  posts.push(newPost);
+
+  console.log(posts);
+
+  return NextResponse.json(newPost);
 }

@@ -1,5 +1,5 @@
 const url = "https://jsonplaceholder.typicode.com";
-// const url = "/api";
+// const url = "http://localhost:3000/api";
 
 export const getAllPosts = async () => {
   const response = await fetch(`${url}/posts`);

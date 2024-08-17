@@ -1,27 +1,31 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { Metadata } from "next";
 import { getAllPosts } from "@/services/getPosts";
 import "./style.scss";
 import { Posts } from "@/components/Posts";
-import { PostSearch } from "@/components/PostSearch";
+import Link from "next/link";
+import NewPostForm from "@/components/NewPostForm";
+import { revalidatePath } from "next/cache";
 
-export default function Blog() {
-  const [posts, setPosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getAllPosts()
-      .then(setPosts)
-      .finally(() => setLoading(false));
-  }, []);
+export default async function Blog() {
+  const posts = await getAllPosts();
 
   return (
     <>
       <h1>Blog page</h1>
-      <PostSearch onSearch={setPosts} />
-      {loading ? "Loading..." : <Posts posts={posts} />}
+      <div className="blog__panel">
+        <Link href={"blog/new"}>Add new post</Link>
+        {/* <PostSearch onSearch={setPosts} /> */}
+      </div>
+
+      {<Posts posts={posts} />}
+
+      <hr />
+
+      <NewPostForm
+        onSuccess={async () => {
+          "use server";
+          revalidatePath("/blog");
+        }}
+      />
     </>
   );
 }
