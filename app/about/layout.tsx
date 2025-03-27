@@ -10,6 +10,9 @@ export default function AboutLayout({
       <h1>About us</h1>
       <ul>
         <li>
+          <Link href="/about">About home</Link>
+        </li>
+        <li>
           <Link href="/about/contacts">Contacts</Link>
         </li>
         <li>
